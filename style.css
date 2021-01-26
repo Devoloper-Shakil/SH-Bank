@@ -1,0 +1,27 @@
+body{
+    padding: 100px;
+}
+.login-arria{
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    padding: 50px;
+}
+#tarnjection-area{
+    display: none;
+}
+.stutes{
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+}
+.deposit{
+    background-color:#110ad9e6;
+}
+.withdraw{
+    background-color: lightsalmon;
+}
+.balance{
+    background-color: orange;
+}

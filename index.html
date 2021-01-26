@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="login-box">
+        <h1 class="text-center">Woelcome TO SH Bank</h1>
+        <div class="login-arria">
+            <h4>Login</h4>
+            <input type="text" class="form-control" placeholder="Email">
+            <br>
+            <input type="password" class="form-control" placeholder="Password">
+            <br>
+            <button id="login" class="btn btn-success">Enter</button>
+        </div>
+    </div>
+    <div id="tarnjection-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit stutes">
+                    <h4>Deposit</h4>
+                    <h2>$ <span id="currentAmount">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw stutes">
+                    <h4>Withdraw</h4>
+                    <h2>$ <span id="currentWithdrow">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance stutes">
+                    <h4>Balance</h4>
+                    <h2>$ <span id="currentBalance"> 00</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login-arria">
+                    <h2>Deposit</h2>
+                    <br>
+                    <input id="depositAmount" type="text" class="form-control"
+                        placeholder="$ amount you want to deposit">
+                    <br>
+                    <button id="diposit" class="btn btn-success">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="login-arria">
+                    <h2>Withdraw</h2>
+                    <br>
+                    <input id="withdrowAmount" type="text" class="form-control"
+                        placeholder="$ amount you want to withdraw">
+                    <br>
+                    <button id="withdraw" class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // login bottunt even haldering
+        const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click", function () {
+            const loginBox = document.getElementById("login-box");
+            loginBox.style.display = "none";
+            const tarnjactionArea = document.getElementById("tarnjection-area");
+            tarnjactionArea.style.display = "block"
+        })
+        // deposit bottun even handeling
+        const depositBtn = document.getElementById("diposit");
+        depositBtn.addEventListener("click", function () {
+            const depositAmount = document.getElementById("depositAmount").value;
+            const depositNumeber = parseFloat(depositAmount);
+            const withdrawBtn = document.getElementById("withdraw");
+            withdrawBtn.addEventListener("click", function () {
+                const withdrowAmount = document.getElementById("withdrowAmount").value;
+                const withdrowAmountNumber = parseFloat(withdrowAmount);
+                const currentWithdrow = document.getElementById("currentWithdrow").innerText;
+                const currentWithdrowNumber = parseFloat(currentWithdrow);
+                const torttalWothedro = withdrowAmountNumber + currentWithdrowNumber;
+                document.getElementById("currentWithdrow").innerText = torttalWothedro;
+                const currentBalance = document.getElementById("currentBalance").innerText;
+                const BalanceNumber = parseFloat(currentBalance);
+                const balanceTotal = BalanceNumber - withdrowAmountNumber;
+                document.getElementById("currentBalance").innerText = balanceTotal;
+                document.getElementById("withdrowAmount").value = "";
+            })
+            document.getElementById("depositAmount").value = "";
+            function allDipsite(id, depositNumeber) {
+                const currentAmount = document.getElementById(id).innerText;
+                const currentNumber = parseFloat(currentAmount);
+                const torttal = depositNumeber + currentNumber;
+                document.getElementById(id).innerText = torttal;
+            }
+            allDipsite("currentAmount", depositNumeber);
+            allDipsite("currentBalance", depositNumeber);
+        })
+    </script>
+</body>
+
+</html>
